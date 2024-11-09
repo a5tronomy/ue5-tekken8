@@ -139,6 +139,10 @@ class UTextureRenderTarget2D : public UTextureRenderTarget
 	UPROPERTY()
 	TEnumAsByte<enum EPixelFormat> OverrideFormat;
 
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AssetRegistrySearchable, Category = "Polaris|TextureRenderTarget2D")
+	int32 NumMips;
+	
 	/**
 	 * Initialize the settings needed to create a render target texture
 	 * and create its resource
@@ -245,9 +249,6 @@ class UTextureRenderTarget2D : public UTextureRenderTarget
 			return !bForceLinearGamma;
 		}
 	}
-
-private:
-	int32	NumMips;
 };
 
 

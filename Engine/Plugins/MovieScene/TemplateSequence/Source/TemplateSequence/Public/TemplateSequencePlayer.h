@@ -15,6 +15,9 @@ class TEMPLATESEQUENCE_API UTemplateSequencePlayer : public UMovieSceneSequenceP
 {
 public:
 
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_TemplateSequencePlayer[0x2] = {};
+	
 	GENERATED_BODY()
 
 	UTemplateSequencePlayer(const FObjectInitializer&);

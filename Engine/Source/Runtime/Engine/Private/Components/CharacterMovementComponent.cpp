@@ -2833,6 +2833,13 @@ void UCharacterMovementComponent::SetCrouchedHalfHeight(const float NewValue)
 	}
 }
 
+// TEKKEN 8 Custom Function
+void UCharacterMovementComponent::SetFallingAccelerationOutSide(float Speed, float speed_z, float acccel, float rotY)
+{
+	float newAccelOutside = 0.0f;
+	FallingAcccelOutSide = newAccelOutside;
+}
+
 float UCharacterMovementComponent::GetCrouchedHalfHeight() const
 { 
 	return CrouchedHalfHeight; 

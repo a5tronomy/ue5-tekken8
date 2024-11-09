@@ -241,6 +241,12 @@ protected:
 	UPROPERTY(config)
 	float DefaultLensFStop;
 
+public:	
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris|config")
+	float OverridePostProcessBlendWeight;
+
+protected:	
 	virtual void UpdateCameraLens(float DeltaTime, FMinimalViewInfo& DesiredView);
 
 	virtual void NotifyCameraCut() override;

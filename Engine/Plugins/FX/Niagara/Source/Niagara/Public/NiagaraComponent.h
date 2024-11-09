@@ -566,7 +566,19 @@ public:
 	UE_DEPRECATED(4.27, "This method will be removed in a future release. Use the method provided by the Niagara Function Library instead.")
 	UFUNCTION(BlueprintCallable, Category = Niagara)
 	UNiagaraDataInterface* GetDataInterface(const FString &Name);
+	
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category = "Polaris|Niagara")
+	void SetPolarisDeltaTimeScale(float Scale);
 
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category = "Polaris|Niagara")
+	float GetPolarisDeltaTimeScale();
+
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category = "Polaris|Niagara")
+	bool GetAutoDestroy();
+	
 	/**
 		The significant index for this component. i.e. this is the Nth most significant instance of it's system in the scene.
 		Passed to the script to allow us to scale down internally for less significant systems instances.
@@ -606,7 +618,7 @@ public:
 	void EnsureOverrideParametersConsistent() const;
 #endif
 	//~ End UObject Interface
-
+	
 	UFUNCTION(BlueprintCallable, Category = Preview, meta = (Keywords = "preview LOD Distance scalability"))
 	void SetPreviewLODDistance(bool bEnablePreviewLODDistance, float PreviewLODDistance, float PreviewMaxDistance);
 
@@ -842,6 +854,12 @@ private:
 
 	UPROPERTY(transient)
 	TObjectPtr<class UNiagaraCullProxyComponent> CullProxy;
+
+	// TEKKEN 8 Custom Unreflected Variable
+	float PolarisDeltaTimeScale;
+	
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_NiagaraComponent[0x4] = {};
 
 	void CreateCullProxy(bool bForce = false);
 	void DestroyCullProxy();

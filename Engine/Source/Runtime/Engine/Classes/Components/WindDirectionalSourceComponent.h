@@ -45,6 +45,10 @@ class ENGINE_API UWindDirectionalSourceComponent : public USceneComponent
 public:
 	FWindSourceSceneProxy* SceneProxy;
 
+	// TEKKEN 8 Custom Property
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Polaris|WindDirectionalSourceComponent")
+	int32 Group;
+
 	/**
 	 * Because the actual data used to query wind is stored on the render thread in
 	 * an instance of FWindSourceSceneProxy all of our properties are read only.

@@ -38,6 +38,12 @@ void UListViewBase::ValidateCompiledDefaults(IWidgetCompilerLog& CompileLog) con
 }
 #endif
 
+// TEKKEN 8 Custom Function
+void UListViewBase::SetScrollAnimation(bool isAnim)
+{
+	bEnableScrollAnimation = isAnim;
+}
+
 void UListViewBase::RegenerateAllEntries()
 {
 	EntryWidgetPool.ReleaseAll();

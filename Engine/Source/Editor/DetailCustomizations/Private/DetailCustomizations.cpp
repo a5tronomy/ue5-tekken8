@@ -494,6 +494,11 @@ void FDetailCustomizationsModule::RegisterSectionMappings()
 			TSharedRef<FPropertySection> Section = PropertyModule.FindOrCreateSection("Object", "General", LOCTEXT("General", "General"));
 			Section->AddCategory("Default"); // default category for BP instance editable variables
 		}
+
+		{
+			TSharedRef<FPropertySection> Section = PropertyModule.FindOrCreateSection("Object", "Polaris", LOCTEXT("Polaris", "Polaris"));
+			Section->AddCategory("Polaris"); // Custom category for TEKKEN 8 related elements, named after the project name
+		}
 	}
 
 	// Actor

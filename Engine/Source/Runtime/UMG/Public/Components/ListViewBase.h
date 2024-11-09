@@ -516,6 +516,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = ListViewBase)
 	void RegenerateAllEntries();
 
+protected:	
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category = "Polaris|ListViewBase")
+	void SetScrollAnimation(bool isAnim);
+
+public:	
 	/** Scroll the entire list up to the first item */
 	UFUNCTION(BlueprintCallable, Category = ListViewBase)
 	void ScrollToTop();

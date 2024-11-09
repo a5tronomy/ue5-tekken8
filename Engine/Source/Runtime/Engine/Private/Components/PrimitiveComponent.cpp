@@ -1916,6 +1916,12 @@ void UPrimitiveComponent::SetBoundsScale(float NewBoundsScale)
 	MarkRenderTransformDirty();
 }
 
+// TEKKEN 8 Custom Function
+void UPrimitiveComponent::SetBehindGUI(bool bNewBehindGUI)
+{
+	bBehindGUI = bNewBehindGUI;
+}
+
 UMaterialInterface* UPrimitiveComponent::GetMaterial(int32 Index) const
 {
 	return NULL;
@@ -2129,6 +2135,12 @@ void UPrimitiveComponent::SetCustomPrimitiveDataVector4(int32 DataIndex, FVector
 	// LWC_TODO: precision loss
 	FVector4f ValueFlt(Value);
 	SetCustomPrimitiveDataInternal(DataIndex, {ValueFlt.X, ValueFlt.Y, ValueFlt.Z, ValueFlt.W});
+}
+
+// TEKKEN 8 Custom Function
+void UPrimitiveComponent::SetCustomPrimitiveData(TArray<float> NewData)
+{
+	CustomPrimitiveData.Data = NewData;
 }
 
 void UPrimitiveComponent::SetScalarParameterForDefaultCustomPrimitiveData(FName ParameterName, float Value)

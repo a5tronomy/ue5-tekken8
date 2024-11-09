@@ -489,6 +489,9 @@ private:
 	int32 SelectedEditorMaterial;
 #endif // WITH_EDITORONLY_DATA
 
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_SkinnedMeshComponent[0x10] = {};
+	
 public:
 	//
 	// Physics.
@@ -594,6 +597,21 @@ public:
 	 */
 	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = SkeletalMesh)
 	uint8 bUseBoundsFromLeaderPoseComponent : 1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Polaris|SkeletalMesh")
+	uint8 bForceUseBoundsFromLeaderPoseComponent : 1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Polaris|SkeletalMesh")
+	uint8 bForceUsePhysicsAssetBounds : 1;
+
+	// TEKKEN 8 Unreflected Custom Data
+	uint8 UnknownData_SkinnedMeshComponent02;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(Instanced)
+	TArray<TObjectPtr<USceneComponent>> AdditionalBoundsComponentArray;
 
 #if WITH_EDITORONLY_DATA
 	UE_DEPRECATED(5.1, "This property is deprecated. Please use bUseBoundsFromLeaderPoseComponent instead")
@@ -881,6 +899,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Components|SkinnedMesh")
 	FName GetBoneName(int32 BoneIndex) const;
 
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintPure, Category="Polaris|Components|SkinnedMesh")
+	FVector GetBoneLocation(FName BoneName, TEnumAsByte<EBoneSpaces::Type> Space) const;
+	
 	/**
 	 * Returns bone name linked to a given named socket on the skeletal mesh component.
 	 * If you're unsure to deal with sockets or bones names, you can use this function to filter through, and always return the bone name.

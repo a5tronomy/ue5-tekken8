@@ -162,6 +162,12 @@ private:
 
 	FSequenceCameraShakeSpawnRegister SpawnRegister;
 
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_CameraAnimationSequencePlayer01[0x99] = {};
+
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_CameraAnimationSequencePlayer02[0x28] = {};
+	
 	/** Bound object overrides */
 	UPROPERTY(transient)
 	TObjectPtr<UObject> BoundObjectOverride;
@@ -173,6 +179,9 @@ private:
 	/** The evaluation template instance */
 	UPROPERTY(transient)
 	FMovieSceneRootEvaluationTemplateInstance RootTemplateInstance;
+
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_CameraAnimationSequencePlayer03[0x8] = {};
 
 	/** Play position helper */
 	FMovieScenePlaybackPosition PlayPosition;

@@ -263,6 +263,10 @@ private:
 	UPROPERTY(Interp, EditAnywhere, Category=Rendering, BlueprintReadOnly, Replicated, meta=(AllowPrivateAccess="true", DisplayName="Actor Hidden In Game", SequencerTrackClass="/Script/MovieSceneTracks.MovieSceneVisibilityTrack"))
 	uint8 bHidden:1;
 
+	// TEKKEN 8 Custom Property
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Polaris|Rendering", meta=(AllowPrivateAccess=true))
+	uint8 bHidden_Polaris: 1;
+	
 	UPROPERTY(Replicated)
 	uint8 bTearOff:1;
 
@@ -517,6 +521,22 @@ private:
 	uint8 bActorIsBeingConstructed : 1;
 
 	static uint32 BeginPlayCallDepth;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditInstanceOnly, Category = "Polaris|Scalability")
+	uint8 bDisableScalabilityLow: 1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditInstanceOnly, Category = "Polaris|Scalability")
+	uint8 bDisableScalabilityMedium: 1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditInstanceOnly, Category = "Polaris|Scalability")
+	uint8 bDisableScalabilityHigh: 1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(AdvancedDisplay, EditInstanceOnly, Category = "Polaris|Scalability")
+	uint8 bDisableScalabilityDebug: 1;
 
 protected:
 		
@@ -1625,6 +1645,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Transformation")
 	FVector GetActorRelativeScale3D() const;
 
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category="Polaris|Rendering")
+	virtual void SetActorHiddenInGame_Polaris(bool bNewHidden);
+	
 	/**
 	 *	Sets the actor to be hidden in the game
 	 *	@param	bNewHidden	Whether or not to hide the actor and all its components

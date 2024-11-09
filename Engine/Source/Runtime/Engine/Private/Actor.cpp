@@ -4626,6 +4626,16 @@ FVector AActor::GetActorRelativeScale3D() const
 	return FVector(1,1,1);
 }
 
+// TEKKEN 8 Custom Function
+void AActor::SetActorHiddenInGame_Polaris( bool bNewHidden )
+{
+	if (IsHidden() != bNewHidden)
+	{
+		SetHidden(bNewHidden);
+		MarkComponentsRenderStateDirty();
+	}
+}
+
 void AActor::SetActorHiddenInGame( bool bNewHidden )
 {
 	if (IsHidden() != bNewHidden)

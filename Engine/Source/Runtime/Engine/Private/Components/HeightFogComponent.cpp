@@ -375,10 +375,9 @@ void UExponentialHeightFogComponent::Serialize(FArchive& Ar)
 AExponentialHeightFog::AExponentialHeightFog(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	Component = CreateDefaultSubobject<UExponentialHeightFogComponent>(TEXT("HeightFogComponent0"));
-	RootComponent = Component;
-
-	SetHidden(false);
+	RootComponent = CreateDefaultSubobject<UExponentialHeightFogComponent>(TEXT("HeightFogComponent0"));
+	Component = (UExponentialHeightFogComponent*)RootComponent;
+	bEnabled = false;
 
 #if WITH_EDITORONLY_DATA
 	if (!IsRunningCommandlet() && (GetSpriteComponent() != NULL))
@@ -423,6 +422,5 @@ void AExponentialHeightFog::GetLifetimeReplicatedProps( TArray< FLifetimePropert
 
 void AExponentialHeightFog::OnRep_bEnabled()
 {
-	Component->SetVisibility(bEnabled);
 }
 

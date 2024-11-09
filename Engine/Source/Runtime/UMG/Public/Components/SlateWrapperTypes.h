@@ -177,7 +177,8 @@ namespace EVirtualKeyboardType
 		Web,
 		Email,
 		Password,
-		AlphaNumeric
+		AlphaNumeric,
+		Default_PolarisMultiline
 	};
 }
 

@@ -275,8 +275,8 @@ protected:
  * A placeable actor that represents a planet atmosphere material and simulates sky and light scattering within it.
  * @see https://docs.unrealengine.com/en-US/Engine/Actors/FogEffects/SkyAtmosphere/index.html
  */
-UCLASS(showcategories = (Movement, Rendering, Transformation, DataLayers, "Input|MouseInput", "Input|TouchInput"), ClassGroup = Fog, hidecategories = (Info, Object, Input), MinimalAPI)
-class ASkyAtmosphere : public AInfo
+UCLASS(showcategories = (Movement, Rendering, Transformation, DataLayers, "Input|MouseInput", "Input|TouchInput"), ClassGroup = Fog, hidecategories = (Info, Object, Input))
+class ENGINE_API ASkyAtmosphere : public AInfo
 {
 	GENERATED_UCLASS_BODY()
 
@@ -297,6 +297,6 @@ private:
 public:
 
 	/** Returns SkyAtmosphereComponent subobject */
-	ENGINE_API USkyAtmosphereComponent* GetComponent() const { return SkyAtmosphereComponent; }
+	USkyAtmosphereComponent* GetComponent() const { return SkyAtmosphereComponent; }
 
 };

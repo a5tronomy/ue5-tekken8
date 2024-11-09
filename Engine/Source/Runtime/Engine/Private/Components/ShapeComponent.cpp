@@ -57,7 +57,6 @@ UShapeComponent::UShapeComponent(const FObjectInitializer& ObjectInitializer)
 	bUseArchetypeBodySetup = !IsTemplate();
 	
 	bHasCustomNavigableGeometry = EHasCustomNavigableGeometry::Yes;
-	bCanEverAffectNavigation = true;
 	bDynamicObstacle = false;
 	
 #if WITH_EDITOR

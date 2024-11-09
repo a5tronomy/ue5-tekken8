@@ -277,18 +277,18 @@ public:
 	 * The minimum distance at which the primitive should be rendered, 
 	 * measured in world space units from the center of the primitive's bounding sphere to the camera position.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=LOD)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=LOD)
 	float MinDrawDistance;
 
 	/**  Max draw distance exposed to LDs. The real max draw distance is the min (disregarding 0) of this and volumes affecting this object. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=LOD, meta=(DisplayName="Desired Max Draw Distance") )
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=LOD, meta=(DisplayName="Desired Max Draw Distance") )
 	float LDMaxDrawDistance;
 
 	/**
 	 * The distance to cull this primitive at.  
 	 * A CachedMaxDrawDistance of 0 indicates that the primitive should not be culled by distance.
 	 */
-	UPROPERTY(Category=LOD, AdvancedDisplay, VisibleAnywhere, BlueprintReadOnly, meta=(DisplayName="Current Max Draw Distance") )
+	UPROPERTY(Category=LOD, AdvancedDisplay, VisibleAnywhere, BlueprintReadWrite, meta=(DisplayName="Current Max Draw Distance") )
 	float CachedMaxDrawDistance;
 
 	/** The scene depth priority group to draw the primitive in. */
@@ -300,11 +300,11 @@ public:
 	TEnumAsByte<enum ESceneDepthPriorityGroup> ViewOwnerDepthPriorityGroup;
 
 	/** Quality of indirect lighting for Movable primitives.  This has a large effect on Indirect Lighting Cache update time. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting)
 	TEnumAsByte<EIndirectLightingCacheQuality> IndirectLightingCacheQuality;
 
 	/** Controls the type of lightmap used for this component. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting)
 	ELightmapType LightmapType;
 
 	/** Determines how the geometry of a component will be incorporated in proxy (simplified) HLODs. */
@@ -324,7 +324,7 @@ public:
 	uint8 bIsValidTextureStreamingBuiltData : 1;
 
 	/** When enabled this object will not be culled by distance. This is ignored if a child of a HLOD. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=LOD)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=LOD)
 	uint8 bNeverDistanceCull : 1;
 
 	/** Whether this primitive is referenced by a FLevelRenderAssetManager  */
@@ -404,23 +404,23 @@ public:
 	uint8 bUseViewOwnerDepthPriorityGroup:1;
 
 	/** Whether to accept cull distance volumes to modify cached cull distance. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=LOD)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=LOD)
 	uint8 bAllowCullDistanceVolume:1;
 
 	/** If true, this component will be visible in reflection captures. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = Rendering)
 	uint8 bVisibleInReflectionCaptures:1;
 	
 	/** If true, this component will be visible in real-time sky light reflection captures. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = Rendering)
 	uint8 bVisibleInRealTimeSkyCaptures :1;
 
 	/** If true, this component will be visible in ray tracing effects. Turning this off will remove it from ray traced reflections, shadows, etc. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = Rendering)
 	uint8 bVisibleInRayTracing : 1;
 
 	/** If true, this component will be rendered in the main pass (z prepass, basepass, transparency) */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = Rendering)
 	uint8 bRenderInMainPass:1;
 
 	/** If true, this component will be rendered in the depth pass even if it's not rendered in the main pass */
@@ -428,23 +428,27 @@ public:
 	uint8 bRenderInDepthPass:1;
 
 	/** Whether the primitive receives decals. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Rendering)
 	uint8 bReceivesDecals:1;
 
 	/** If this is True, this primitive will render black with an alpha of 0, but all secondary effects (shadows, reflections, indirect lighting) remain. This feature is currently only implemented in the Path Tracer. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = PathTracing, Interp)
 	uint8 bHoldout : 1;
 
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Polaris|Rendering")
+	uint8 bBehindGUI: 1;
+	
 	/** If this is True, this component won't be visible when the view actor is the component's owner, directly or indirectly. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = Rendering)
 	uint8 bOwnerNoSee:1;
 
 	/** If this is True, this component will only be visible when the view actor is the component's owner, directly or indirectly. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = Rendering)
 	uint8 bOnlyOwnerSee:1;
 
 	/** Treat this primitive as part of the background for occlusion purposes. This can be used as an optimization to reduce the cost of rendering skyboxes, large ground planes that are part of the vista, etc. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Rendering)
 	uint8 bTreatAsBackgroundForOcclusion:1;
 
 	/** 
@@ -452,7 +456,7 @@ public:
 	 * This should generally be true for all objects, and let the renderer make decisions about whether to render objects in the depth only pass.
 	 * @todo - if any rendering features rely on a complete depth only pass, this variable needs to go away.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Rendering)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Rendering)
 	uint8 bUseAsOccluder:1;
 
 	/** If this is True, this component can be selected in the editor. */
@@ -466,7 +470,7 @@ public:
 #endif //WITH_EDITORONLY_DATA
 
 	/** If true, forces mips for textures used by this component to be resident when this component's level is loaded. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=TextureStreaming)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=TextureStreaming)
 	uint8 bForceMipStreaming:1;
 
 	/** If true a hit-proxy will be generated for each instance of instanced static meshes */
@@ -492,15 +496,15 @@ public:
 	uint8 bAffectIndirectLightingWhileHidden:1;
 
 	/** Controls whether the primitive should affect dynamic distance field lighting methods.  This flag is only used if CastShadow is true. **/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Lighting, AdvancedDisplay)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Lighting, AdvancedDisplay)
 	uint8 bAffectDistanceFieldLighting:1;
 
 	/** Controls whether the primitive should cast shadows in the case of non precomputed shadowing.  This flag is only used if CastShadow is true. **/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Lighting, AdvancedDisplay, meta=(EditCondition="CastShadow", DisplayName = "Dynamic Shadow"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Lighting, AdvancedDisplay, meta=(EditCondition="CastShadow", DisplayName = "Dynamic Shadow"))
 	uint8 bCastDynamicShadow:1;
 
 	/** Whether the object should cast a static shadow from shadow casting lights.  This flag is only used if CastShadow is true. */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Lighting, AdvancedDisplay, meta=(EditCondition="CastShadow", DisplayName = "Static Shadow"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Lighting, AdvancedDisplay, meta=(EditCondition="CastShadow", DisplayName = "Static Shadow"))
 	uint8 bCastStaticShadow:1;
 
 	/** 
@@ -508,41 +512,41 @@ public:
 	 * Volumetric translucent shadows are useful for primitives with smoothly changing opacity like particles representing a volume, 
 	 * But have artifacts when used on highly opaque surfaces.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Volumetric Translucent Shadow"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Volumetric Translucent Shadow"))
 	uint8 bCastVolumetricTranslucentShadow:1;
 
 	/**
 	 * Whether the object should cast contact shadows.
 	 * This flag is only used if CastShadow is true.
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Lighting, AdvancedDisplay, meta=(EditCondition="CastShadow", DisplayName = "Contact Shadow"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Lighting, AdvancedDisplay, meta=(EditCondition="CastShadow", DisplayName = "Contact Shadow"))
 	uint8 bCastContactShadow:1;
 
 	/** 
 	 * When enabled, the component will only cast a shadow on itself and not other components in the world.  
 	 * This is especially useful for first person weapons, and forces bCastInsetShadow to be enabled.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting, meta=(EditCondition="CastShadow"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting, meta=(EditCondition="CastShadow"))
 	uint8 bSelfShadowOnly:1;
 
 	/** 
 	 * When enabled, the component will be rendering into the far shadow cascades (only for directional lights).
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Far Shadow"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Far Shadow"))
 	uint8 bCastFarShadow:1;
 
 	/** 
 	 * Whether this component should create a per-object shadow that gives higher effective shadow resolution. 
 	 * Useful for cinematic character shadowing. Assumed to be enabled if bSelfShadowOnly is enabled.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Dynamic Inset Shadow"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Dynamic Inset Shadow"))
 	uint8 bCastInsetShadow:1;
 
 	/** 
 	 * Whether this component should cast shadows from lights that have bCastShadowsFromCinematicObjectsOnly enabled.
 	 * This is useful for characters in a cinematic with special cinematic lights, where the cost of shadowmap rendering of the environment is undesired.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting, meta=(EditCondition="CastShadow"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting, meta=(EditCondition="CastShadow"))
 	uint8 bCastCinematicShadow:1;
 
 	/** 
@@ -554,7 +558,7 @@ public:
 	uint8 bCastHiddenShadow:1;
 
 	/** Whether this primitive should cast dynamic shadows as if it were a two sided material. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Shadow Two Sided"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting, meta=(EditCondition="CastShadow", DisplayName = "Shadow Two Sided"))
 	uint8 bCastShadowAsTwoSided:1;
 
 	/** @deprecated Replaced by LightmapType */
@@ -566,13 +570,13 @@ public:
 	 * When enabled, attached component shadowing settings like bCastInsetShadow, bCastVolumetricTranslucentShadow, etc, will be ignored.
 	 * This is useful for improving performance when multiple movable components are attached together.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting)
 	uint8 bLightAttachmentsAsGroup:1;
 
 	/** 
 	 * If set, then it overrides any bLightAttachmentsAsGroup set in a parent.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting)
 	uint8 bExcludeFromLightAttachmentGroup :1;
 
 	/**
@@ -587,7 +591,7 @@ public:
 	 * When enabled shadowing data comes from the volume lighting samples precomputed by Lightmass, which are very sparse.
 	 * This is currently only used on stationary directional lights.  
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting)
 	uint8 bSingleSampleShadowFromStationaryLights:1;
 
 	// Physics
@@ -634,7 +638,7 @@ public:
 	uint8 bIsBeingMovedByEditor:1;
 
 	/** If true, this component will be rendered in the CustomDepth pass (usually used for outlines) */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Rendering, meta=(DisplayName = "Render CustomDepth Pass"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Rendering, meta=(DisplayName = "Render CustomDepth Pass"))
 	uint8 bRenderCustomDepth:1;
 
 	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = Rendering, meta = (DisplayName = "Visible In Scene Capture Only", ToolTip = "When true, will only be visible in Scene Capture"))
@@ -746,7 +750,7 @@ public:
 	 * Channels that this component should be in.  Lights with matching channels will affect the component.  
 	 * These channels only apply to opaque materials, direct lighting, and dynamic lighting and shadowing.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Lighting)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Lighting)
 	FLightingChannels LightingChannels;
 
 	/**
@@ -761,7 +765,7 @@ public:
 	int32 VisibilityId=0;
 
 	/** Optionally write this 0-255 value to the stencil buffer in CustomDepth pass (Requires project setting or r.CustomDepth == 3) */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Rendering,  meta=(UIMin = "0", UIMax = "255", editcondition = "bRenderCustomDepth", DisplayName = "CustomDepth Stencil Value"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Rendering,  meta=(UIMin = "0", UIMax = "255", editcondition = "bRenderCustomDepth", DisplayName = "CustomDepth Stencil Value"))
 	int32 CustomDepthStencilValue;
 
 private:
@@ -786,7 +790,7 @@ public:
 	 * Warning: This should never be set to a non-default value unless you know what you are doing, as it will prevent the renderer from sorting correctly.  
 	 * It is especially problematic on dynamic gameplay effects.
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, AdvancedDisplay, Category=Rendering)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, AdvancedDisplay, Category=Rendering)
 	int32 TranslucencySortPriority;
 
 	/**
@@ -845,6 +849,10 @@ public:
 	* */
 	int32 RegistrationSerialNumber = -1;
 
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere,  BlueprintReadOnly, AdvancedDisplay, Category = "Polaris|Rendering")
+	float LpvBiasMultiplier;
+
 	/**
 	* Incremented by the main thread before being attached to the scene, decremented
 	* by the rendering thread after removal. This counter exists to assert that 
@@ -890,7 +898,7 @@ public:
 	 * Warning: Increasing the bounds of an object will reduce performance and shadow quality!
 	 * Currently only used by StaticMeshComponent and SkeletalMeshComponent.
 	 */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, Category=Rendering, meta=(UIMin = "1", UIMax = "10.0"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category=Rendering, meta=(UIMin = "1", UIMax = "10.0"))
 	float BoundsScale;
 
 	/** Last time the component was submitted for rendering (called FScene::AddPrimitive). */
@@ -1086,6 +1094,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Rendering|Material")
 	void SetCustomPrimitiveDataVector4(int32 DataIndex, FVector4 Value);
 
+	// Tekken 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category="Polaris|Rendering|Material")
+	void SetCustomPrimitiveData(TArray<float> NewData);
+	
 	/** 
 	 * Get the custom primitive data for this primitive component.
 	 * @return The payload of custom data that will be set on the primitive and accessible in the material through a material expression.
@@ -1381,13 +1393,17 @@ public:
 	ERayTracingGroupCullingPriority RayTracingGroupCullingPriority;
 
 	/** Mask used for stencil buffer writes. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = "Rendering", meta = (editcondition = "bRenderCustomDepth"))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Rendering", meta = (editcondition = "bRenderCustomDepth"))
 	ERendererStencilMask CustomDepthStencilWriteMask;
 
 	/** Scale the bounds of this object, used for frustum culling. Useful for features like WorldPositionOffset. */
 	UFUNCTION(BlueprintCallable, Category = "Rendering")
 	void SetBoundsScale(float NewBoundsScale=1.f);
 
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category = "Polaris|Rendering")
+	void SetBehindGUI(bool bNewBehindGUI);
+	
 	/**
 	 * Returns the material used by the element at the specified index
 	 * @param ElementIndex - The element to access the material of.

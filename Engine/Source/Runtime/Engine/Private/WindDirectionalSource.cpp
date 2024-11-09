@@ -151,6 +151,9 @@ UWindDirectionalSourceComponent::UWindDirectionalSourceComponent(const FObjectIn
 	MinGustAmount = 0.1f;
 	MaxGustAmount = 0.2f;
 
+	// TEKKEN 8 Custom Property
+	Group = 0;
+
 	// wind will be activated automatically by default
 	bAutoActivate = true;
 }

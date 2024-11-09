@@ -1662,6 +1662,10 @@ public:
 	/** Returns true if the character is allowed to crouch in the current state. By default it is allowed when walking or falling, if CanEverCrouch() is true. */
 	virtual bool CanCrouchInCurrentState() const;
 
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category ="Polaris|Character Movement")
+	void SetFallingAccelerationOutSide(float Speed, float speed_z, float acccel, float rotY);
+	
 	/** Sets collision half-height when crouching and updates dependent computations */
 	UFUNCTION(BlueprintSetter)
 	void SetCrouchedHalfHeight(const float NewValue);
@@ -2709,6 +2713,23 @@ protected:
 	void UpdateDefaultAvoidance();
 
 public:
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY()
+	float FallingSpeedOutSide;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY()
+	float FallingSpeedZOutSide;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY()
+	float FallingAcccelOutSide;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY()
+	float FallingSpeedRotY;
+	
 	/** lock avoidance velocity */
 	void SetAvoidanceVelocityLock(class UAvoidanceManager* Avoidance, float Duration);
 

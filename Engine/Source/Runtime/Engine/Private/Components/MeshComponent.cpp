@@ -26,7 +26,6 @@ UMeshComponent::UMeshComponent(const FObjectInitializer& ObjectInitializer)
 {
 	CastShadow = true;
 	bUseAsOccluder = true;
-	bCanEverAffectNavigation = true;
 	bCachedMaterialParameterIndicesAreDirty = true;
 	bEnableMaterialParameterCaching = false;
 }
@@ -239,6 +238,15 @@ void UMeshComponent::SetOverlayMaterialMaxDrawDistance(float InMaxDrawDistance)
 	{
 		OverlayMaterialMaxDrawDistance = InMaxDrawDistance;
 		MarkRenderStateDirty();
+	}
+}
+
+// TEKKEN 8 Custom Function
+void UMeshComponent::SetOverrideMaterial(int32 ElementIndex, UMaterialInterface* Material)
+{
+	if (ElementIndex >= 0 && ElementIndex < GetNumMaterials())
+	{
+		SetMaterial(ElementIndex, Material);
 	}
 }
 

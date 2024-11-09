@@ -1989,7 +1989,6 @@ UHierarchicalInstancedStaticMeshComponent::UHierarchicalInstancedStaticMeshCompo
 #endif
 	, AccumulatedNavigationDirtyArea(ForceInit)
 {
-	bCanEverAffectNavigation = true;
 	bUseAsOccluder = false;
 }
 

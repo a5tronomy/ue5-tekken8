@@ -19,8 +19,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 AAtmosphericFog::AAtmosphericFog(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	AtmosphericFogComponent = CreateDefaultSubobject<UAtmosphericFogComponent>(TEXT("AtmosphericFogComponent0"));
-	RootComponent = AtmosphericFogComponent;
+	RootComponent = CreateDefaultSubobject<UAtmosphericFogComponent>(TEXT("AtmosphericFogComponent0"));
+	AtmosphericFogComponent = (UAtmosphericFogComponent*)RootComponent;
 
 #if WITH_EDITORONLY_DATA
 	ArrowComponent = CreateEditorOnlyDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent0"));

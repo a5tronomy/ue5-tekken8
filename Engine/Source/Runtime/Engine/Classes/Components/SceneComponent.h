@@ -289,7 +289,7 @@ public:
 	TEnumAsByte<EComponentMobility::Type> Mobility;
 
 	/** If detail mode is >= system detail mode, primitive won't be rendered. */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category = LOD)
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = LOD)
 	TEnumAsByte<enum EDetailMode> DetailMode;
 
 	/** Delegate that will be called when PhysicsVolume has been changed **/

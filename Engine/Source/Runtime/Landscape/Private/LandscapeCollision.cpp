@@ -2641,7 +2641,6 @@ ULandscapeHeightfieldCollisionComponent::ULandscapeHeightfieldCollisionComponent
 	bUseAsOccluder = true;
 	bAllowCullDistanceVolume = false;
 	Mobility = EComponentMobility::Static;
-	bCanEverAffectNavigation = true;
 	bHasCustomNavigableGeometry = EHasCustomNavigableGeometry::Yes;
 
 	HeightfieldRowsCount = -1;

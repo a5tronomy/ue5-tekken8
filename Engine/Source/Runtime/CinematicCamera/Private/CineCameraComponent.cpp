@@ -36,9 +36,10 @@ UCineCameraComponent::UCineCameraComponent()
 	
 	PrimaryComponentTick.bCanEverTick = true;
 	bAutoActivate = true;
-
 	bConstrainAspectRatio = true;
-
+	
+	// TEKKEN 8 Custom Property
+	OverridePostProcessBlendWeight = 1.00f;
 	
 	const UCineCameraSettings* CineCameraSettings = GetDefault<UCineCameraSettings>();
 	check(CineCameraSettings);

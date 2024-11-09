@@ -80,6 +80,51 @@ ULevelSequencePlayer* ULevelSequencePlayer::CreateLevelSequencePlayer(UObject* W
 	return Actor->SequencePlayer;
 }
 
+// TEKKEN 8 Custom Function
+ULevelSequencePlayer* ULevelSequencePlayer::CreateLevelSequencePlayerEx(UObject* WorldContextObject, AActor* Owner, ULevelSequence* InLevelSequence, FMovieSceneSequencePlaybackSettings Settings, ALevelSequenceActor*& OutActor)
+{
+	// Validate the Level Sequence
+	if (InLevelSequence == nullptr)
+	{
+		return nullptr;
+	}
+
+	// Get the World context
+	UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull);
+	if (World == nullptr || World->bIsTearingDown)
+	{
+		return nullptr;
+	}
+
+	// Configure spawn parameters
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	SpawnParams.ObjectFlags |= RF_Transient;
+	SpawnParams.bAllowDuringConstructionScript = true;
+	SpawnParams.Owner = Owner;  // Set the owner of the spawned actor
+
+	// Defer construction for autoplay so that BeginPlay() is called
+	SpawnParams.bDeferConstruction = true;
+
+	// Spawn the Level Sequence Actor
+	ALevelSequenceActor* Actor = World->SpawnActor<ALevelSequenceActor>(SpawnParams);
+
+	// Set playback settings and sequence
+	Actor->PlaybackSettings = Settings;
+	Actor->SequencePlayer->SetPlaybackSettings(Settings);
+	Actor->SetSequence(InLevelSequence);
+
+	// Initialize the player
+	Actor->InitializePlayer();
+	OutActor = Actor;
+
+	// Complete the actor's spawning process with default transform
+	FTransform DefaultTransform;
+	Actor->FinishSpawning(DefaultTransform);
+
+	return Actor->SequencePlayer;
+}
+
 /* ULevelSequencePlayer implementation
  *****************************************************************************/
 

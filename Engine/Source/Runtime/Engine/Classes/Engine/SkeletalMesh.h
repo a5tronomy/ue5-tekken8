@@ -2942,6 +2942,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Deformer", Meta=(Filter="/Script/Engine.SkinnedMeshComponent"))
 	TObjectPtr<UMeshDeformer> DefaultMeshDeformer;
 
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_SkeletalMesh[0x28] = {};
+
 private:
 	/**
 	 * Initial step for the Post Load process - Can't be done in parallel. USkinnedAsset Interface.

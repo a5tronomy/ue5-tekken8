@@ -53,6 +53,9 @@ struct FMovieSceneSequencePlaybackSettings
 		, bPauseAtEnd(false)
 		, bInheritTickIntervalFromOwner(true)
 		, bDynamicWeighting(false)
+	
+		// TEKKEN 8 Custom Property
+		, LoopPoint(0,0)
 	{ }
 
 	GENERATED_BODY()
@@ -117,6 +120,10 @@ struct FMovieSceneSequencePlaybackSettings
 	UPROPERTY(EditAnywhere, Category="Playback")
 	uint32 bDynamicWeighting : 1;
 
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris|Playback")
+	FVector2D LoopPoint;
+	
 	MOVIESCENE_API bool SerializeFromMismatchedTag(const FPropertyTag& Tag, FStructuredArchive::FSlot Slot);
 };
 

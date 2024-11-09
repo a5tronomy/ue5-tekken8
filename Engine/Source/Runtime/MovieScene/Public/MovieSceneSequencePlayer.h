@@ -162,6 +162,9 @@ class MOVIESCENE_API UMovieSceneSequencePlayer
 public:
 	GENERATED_BODY()
 
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_MovieSequencePlayer[0x64] = {};
+	
 	/** Obeserver interface used for controlling whether the effects of this sequence can be seen even when it is playing back. */
 	UPROPERTY(replicated)
 	TScriptInterface<IMovieSceneSequencePlayerObserver> Observer;

@@ -419,8 +419,6 @@ USkinnedMeshComponent::USkinnedMeshComponent(const FObjectInitializer& ObjectIni
 	bBoneVisibilityDirty = false;
 
 	bForceUpdateDynamicDataImmediately = false;
-
-	bCanEverAffectNavigation = false;
 	LeaderBoneMapCacheCount = 0;
 	bSyncAttachParentLOD = true;
 	bIgnoreLeaderPoseComponentLOD = false;
@@ -1846,6 +1844,41 @@ FName USkinnedMeshComponent::GetBoneName(int32 BoneIndex) const
 	return (GetSkinnedAsset() != nullptr && GetSkinnedAsset()->GetRefSkeleton().IsValidIndex(BoneIndex)) ? GetSkinnedAsset()->GetRefSkeleton().GetBoneName(BoneIndex) : NAME_None;
 }
 
+// TEKKEN 8 Custom Function
+FVector USkinnedMeshComponent::GetBoneLocation(FName BoneName, TEnumAsByte<EBoneSpaces::Type> Space) const
+{
+	int32 BoneIndex = GetBoneIndex(BoneName);
+	
+	if (BoneIndex == INDEX_NONE)
+	{
+		return FVector::ZeroVector;
+	}
+	
+	FTransform BoneTransform = GetBoneTransform(BoneIndex);
+
+	if (Space == EBoneSpaces::WorldSpace)
+	{
+		return GetComponentTransform().TransformPosition(BoneTransform.GetLocation());
+	}
+	else if (Space == EBoneSpaces::ComponentSpace)
+	{
+		return BoneTransform.GetLocation();
+	}
+	else
+	{
+		int32 ParentIndex = GetBoneIndex(GetParentBone(BoneName));
+        
+		if (ParentIndex != INDEX_NONE)
+		{
+			FTransform ParentTransform = GetBoneTransform(ParentIndex);
+			return BoneTransform.GetLocation() - ParentTransform.GetLocation();
+		}
+		else
+		{
+			return BoneTransform.GetLocation();
+		}
+	}
+}
 
 FName USkinnedMeshComponent::GetParentBone( FName BoneName ) const
 {

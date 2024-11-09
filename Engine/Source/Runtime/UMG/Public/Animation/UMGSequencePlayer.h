@@ -106,6 +106,9 @@ private:
 
 	void HandleLatentStop();
 
+	// TEKKEN 8 Custom Unreflected Data
+	uint8 UnknownData_UMGSequencePlayer[0x64] = {};
+	
 	/** Animation being played */
 	UPROPERTY()
 	TObjectPtr<UWidgetAnimation> Animation;

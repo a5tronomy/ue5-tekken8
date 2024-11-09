@@ -927,6 +927,24 @@ bool UNiagaraComponent::IsPaused()const
 	return false;
 }
 
+// TEKKEN 8 Custom Function
+void UNiagaraComponent::SetPolarisDeltaTimeScale(float Scale)
+{
+	PolarisDeltaTimeScale = Scale;
+}
+
+// TEKKEN 8 Custom Function
+float UNiagaraComponent::GetPolarisDeltaTimeScale()
+{
+	return PolarisDeltaTimeScale;
+}
+
+// TEKKEN 8 Custom Function
+bool UNiagaraComponent::GetAutoDestroy()
+{
+	return bAutoDestroy;
+}
+
 UNiagaraDataInterface* UNiagaraComponent::GetDataInterface(const FString& Name)
 {
 	return UNiagaraFunctionLibrary::GetDataInterface(UNiagaraDataInterface::StaticClass(), this, *Name);

@@ -51,7 +51,12 @@ enum class ENiagaraMeshLockedAxisSpace : uint8
 	/** The locked axis is in world space */
 	World,
 	/** The locked axis is in the emitter's local space */
-	Local
+	Local,
+	
+	// TEKKEN 8 Custom Enum Modification
+	Local_Mesh_X,
+	Local_Mesh_Y,
+	Local_Mesh_Z
 };
 
 USTRUCT()

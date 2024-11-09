@@ -2388,6 +2388,25 @@ ULevelStreamingDynamic* ULevelStreamingDynamic::LoadLevelInstance(UObject* World
 	return LoadLevelInstance(Params, bOutSuccess);
 }
 
+// TEKKEN 8 Custom Function
+void ULevelStreamingDynamic::UnLoadLevelInstance(UObject* WorldContextObject, ULevelStreamingDynamic* StreamingLevel, bool& bOutSuccess)
+{
+	bOutSuccess = false;
+	if (StreamingLevel)
+	{
+		UWorld* World = GEngine->GetWorldFromContextObjectChecked(WorldContextObject);
+		if (World)
+		{
+			StreamingLevel->SetIsRequestingUnloadAndRemoval(true);
+			
+			if (!World->GetStreamingLevels().Contains(StreamingLevel))
+			{
+				bOutSuccess = true;
+			}
+		}
+	}
+}
+
 ULevelStreamingDynamic* ULevelStreamingDynamic::LoadLevelInstanceBySoftObjectPtr(UObject* WorldContextObject, const TSoftObjectPtr<UWorld> Level, const FVector Location, const FRotator Rotation, bool& bOutSuccess, const FString& OptionalLevelNameOverride, TSubclassOf<ULevelStreamingDynamic> OptionalLevelStreamingClass, bool bLoadAsTempPackage)
 {
 	return LoadLevelInstanceBySoftObjectPtr(WorldContextObject, Level, FTransform(Rotation, Location), bOutSuccess, OptionalLevelNameOverride, OptionalLevelStreamingClass, bLoadAsTempPackage);

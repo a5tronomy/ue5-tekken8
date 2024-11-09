@@ -1696,6 +1696,12 @@ void USkeletalMesh::Serialize( FArchive& Ar )
 	TArray<UObject*> DummyObjs;
 	Ar << DummyObjs;
 
+	// TEKKEN 8 Custom Serialization 
+	if (Ar.IsCooking()) {
+		FName T8PhysicsName = FName("None");
+		Ar << T8PhysicsName;
+	}
+	
 	if (Ar.IsLoading() && Ar.CustomVer(FRenderingObjectVersion::GUID) < FRenderingObjectVersion::TextureStreamingMeshUVChannelData)
 	{
 		TArray<float> CachedStreamingTextureFactors;

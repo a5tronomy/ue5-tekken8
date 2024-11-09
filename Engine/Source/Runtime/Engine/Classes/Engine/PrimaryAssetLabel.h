@@ -47,6 +47,14 @@ public:
 	UPROPERTY(EditAnywhere, Category = PrimaryAssetLabel)
 	FCollectionReference AssetCollection;
 
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, Category = "PrimaryAssetLabel|Polaris")
+	TArray<FDirectoryPath> ExplicitDirectories;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, Category = "PrimaryAssetLabel|Polaris")
+	TArray<FDirectoryPath> ExcludeDirectories;
+	
 	/** Set to editor only if this is not available in a cooked build */
 	virtual bool IsEditorOnly() const
 	{

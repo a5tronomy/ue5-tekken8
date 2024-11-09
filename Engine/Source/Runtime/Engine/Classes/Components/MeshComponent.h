@@ -70,6 +70,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Rendering|Material")
 	void SetOverlayMaterialMaxDrawDistance(float InMaxDrawDistance);
 
+	// TEKKEN 8 Custom Function
+	UFUNCTION(BlueprintCallable, Category="Polaris|Rendering|Material")
+	void SetOverrideMaterial(int32 ElementIndex, UMaterialInterface* Material);
+
 #if WITH_EDITOR
 	/*
 	 * Make sure the Override array is using only the space it should use.

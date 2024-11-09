@@ -386,6 +386,23 @@ protected:
 	uint8 bIsManagedByGameViewportSubsystem:1;
 
 public:
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	uint8 bBehindCharacter:1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	uint8 bNoBlendingHDR:1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	uint8 bCustomPosition:1;
+
+	// TEKKEN 8 Custom Property
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	uint8 bNoColorAccessibility:1;
+
 #if WITH_EDITORONLY_DATA
 	/** Stores the design time flag setting if the widget is hidden inside the designer */
 	UPROPERTY()
