@@ -154,7 +154,7 @@ struct FMovieSceneSequencePlayToParams
  * Abstract class that provides consistent player behaviour for various animation players
  */
 UCLASS(Abstract, BlueprintType)
-class MOVIESCENE_API UMovieSceneSequencePlayer
+class alignas(0x10) MOVIESCENE_API UMovieSceneSequencePlayer
 	: public UObject
 	, public IMovieScenePlayer
 	, public IMovieSceneSequenceTickManagerClient

@@ -15,7 +15,7 @@
 class UWidgetAnimation;
 
 UCLASS(Transient, BlueprintType)
-class UMG_API UUMGSequencePlayer : public UObject, public IMovieScenePlayer
+class alignas(0x10) UMG_API UUMGSequencePlayer : public UObject, public IMovieScenePlayer
 {
 	GENERATED_UCLASS_BODY()
 

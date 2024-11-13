@@ -98,7 +98,7 @@ private:
  * A lightweight sequence player for playing camera animation sequences.
  */
 UCLASS()
-class TEMPLATESEQUENCE_API UCameraAnimationSequencePlayer
+class alignas(0x10) TEMPLATESEQUENCE_API UCameraAnimationSequencePlayer
 	: public UObject
 	, public IMovieScenePlayer
 {
