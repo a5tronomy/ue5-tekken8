@@ -17,6 +17,9 @@
 const FName UPrimaryAssetLabel::DirectoryBundle = FName("Directory");
 const FName UPrimaryAssetLabel::CollectionBundle = FName("Collection");
 
+// TEKKEN 8 Custom Modification
+const FName UPrimaryAssetLabel::ExplicitDirectoriesBundle  = FName("ExplicitDirectories");
+
 UPrimaryAssetLabel::UPrimaryAssetLabel()
 {
 	bLabelAssetsInMyDirectory = false;
@@ -39,7 +42,8 @@ void UPrimaryAssetLabel::UpdateAssetBundleData()
 
 	UAssetManager& Manager = UAssetManager::Get();
 	IAssetRegistry& AssetRegistry = Manager.GetAssetRegistry();
-
+	
+	/* Old version of bLabelAssetsInMyDirectory
 	if (bLabelAssetsInMyDirectory)
 	{
 		FName PackagePath = FName(*FPackageName::GetLongPackagePath(GetOutermost()->GetName()));
@@ -61,8 +65,90 @@ void UPrimaryAssetLabel::UpdateAssetBundleData()
 
 		// Fast set, destroys NewPaths
 		AssetBundleData.SetBundleAssets(DirectoryBundle, MoveTemp(NewPaths));
+	} */
+
+	// TEKKEN 8 Custom Modification
+	if (bLabelAssetsInMyDirectory)
+	{
+		FName PackagePath = FName(*FPackageName::GetLongPackagePath(GetOutermost()->GetName()));
+
+		TArray<FAssetData> DirectoryAssets;
+		AssetRegistry.GetAssetsByPath(PackagePath, DirectoryAssets, true);
+
+		TArray<FTopLevelAssetPath> NewPaths;
+		TSet<FTopLevelAssetPath> ExcludedAssets;
+		
+		for (const FDirectoryPath& ExcludeDir : ExcludeDirectories)
+		{
+			FName ExcludePath = FName(*ExcludeDir.Path);
+			TArray<FAssetData> ExcludeAssets;
+			AssetRegistry.GetAssetsByPath(ExcludePath, ExcludeAssets, true);
+
+			for (const FAssetData& AssetData : ExcludeAssets)
+			{
+				FSoftObjectPath ExcludeAssetRef = Manager.GetAssetPathForData(AssetData);
+				if (!ExcludeAssetRef.IsNull())
+				{
+					ExcludedAssets.Add(ExcludeAssetRef.GetAssetPath());
+				}
+			}
+		}
+		
+		for (const FAssetData& AssetData : DirectoryAssets)
+		{
+			FSoftObjectPath AssetRef = Manager.GetAssetPathForData(AssetData);
+
+			if (!AssetRef.IsNull() && !ExcludedAssets.Contains(AssetRef.GetAssetPath()))
+			{
+				NewPaths.Add(AssetRef.GetAssetPath());
+			}
+		}
+		
+		AssetBundleData.SetBundleAssets(DirectoryBundle, MoveTemp(NewPaths));
 	}
 
+	// TEKKEN 8 Custom Modification
+	if (ExplicitDirectories.Num() > 0)
+	{
+		TArray<FTopLevelAssetPath> ExplicitDirectoryPaths;
+		TSet<FTopLevelAssetPath> ExcludedAssets;
+		
+		for (const FDirectoryPath& ExcludeDir : ExcludeDirectories)
+		{
+			FName ExcludePath = FName(*ExcludeDir.Path);
+			TArray<FAssetData> ExcludeAssets;
+			AssetRegistry.GetAssetsByPath(ExcludePath, ExcludeAssets, true);
+
+			for (const FAssetData& AssetData : ExcludeAssets)
+			{
+				FSoftObjectPath ExcludeAssetRef = Manager.GetAssetPathForData(AssetData);
+				if (!ExcludeAssetRef.IsNull())
+				{
+					ExcludedAssets.Add(ExcludeAssetRef.GetAssetPath());
+				}
+			}
+		}
+		
+		for (const FDirectoryPath& Directory : ExplicitDirectories)
+		{
+			FName DirectoryPackagePath = FName(*Directory.Path);
+			TArray<FAssetData> DirectoryAssets;
+			AssetRegistry.GetAssetsByPath(DirectoryPackagePath, DirectoryAssets, true);
+
+			for (const FAssetData& AssetData : DirectoryAssets)
+			{
+				FSoftObjectPath AssetRef = Manager.GetAssetPathForData(AssetData);
+
+				if (!AssetRef.IsNull() && !ExcludedAssets.Contains(AssetRef.GetAssetPath()))
+				{
+					ExplicitDirectoryPaths.Add(AssetRef.GetAssetPath());
+				}
+			}
+		}
+		
+		AssetBundleData.SetBundleAssets(ExplicitDirectoriesBundle, MoveTemp(ExplicitDirectoryPaths));
+	}
+	
 	if (AssetCollection.CollectionName != NAME_None)
 	{
 		TArray<FTopLevelAssetPath> NewPaths;

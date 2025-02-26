@@ -20,6 +20,10 @@ public:
 	/** Bundle used for collection assets */
 	static const FName CollectionBundle;
 
+	// TEKKEN 8 Custom Modification
+	// Bundle name used for assets found in explicit directories
+	static const FName ExplicitDirectoriesBundle;
+
 	/** Constructor */
 	UPrimaryAssetLabel();
 		
@@ -48,11 +52,15 @@ public:
 	FCollectionReference AssetCollection;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, Category = "PrimaryAssetLabel|Polaris")
+	// List of manually specified directories to label
+	UPROPERTY(EditAnywhere, Category = "PrimaryAssetLabel", meta=(LongPackageName))
 	TArray<FDirectoryPath> ExplicitDirectories;
-
+	
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, Category = "PrimaryAssetLabel|Polaris")
+	// List of manually specified directories to not label
+	// This comes in handy if you have bLabelAssetsInMyDirectory enabled and want a specific (sub)directory to not be labeled
+	// Note that this also applies to the explicit directories list
+	UPROPERTY(EditAnywhere, Category = "PrimaryAssetLabel", meta=(LongPackageName))
 	TArray<FDirectoryPath> ExcludeDirectories;
 	
 	/** Set to editor only if this is not available in a cooked build */
