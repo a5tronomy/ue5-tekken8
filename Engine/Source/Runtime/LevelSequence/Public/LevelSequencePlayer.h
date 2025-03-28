@@ -112,7 +112,7 @@ public:
 public:
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category="Polaris|Sequencer|Player", meta=(WorldContext="WorldContextObject", DynamicOutputParam="OutActor"))
+	UFUNCTION(BlueprintCallable, Category="Sequencer|Player", meta=(WorldContext="WorldContextObject", DynamicOutputParam="OutActor"))
 	static ULevelSequencePlayer* CreateLevelSequencePlayerEx(UObject* WorldContextObject, AActor* Owner, ULevelSequence* LevelSequence, FMovieSceneSequencePlaybackSettings Settings, ALevelSequenceActor*& OutActor);
 	
 	/**

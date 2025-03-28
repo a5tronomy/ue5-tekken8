@@ -83,7 +83,7 @@ class ENGINE_API ULevelStreamingDynamic : public ULevelStreaming
  	static ULevelStreamingDynamic* LoadLevelInstanceBySoftObjectPtr(UObject* WorldContextObject, TSoftObjectPtr<UWorld> Level, FVector Location, FRotator Rotation, bool& bOutSuccess, const FString& OptionalLevelNameOverride = TEXT(""), TSubclassOf<ULevelStreamingDynamic> OptionalLevelStreamingClass = nullptr, bool bLoadAsTempPackage = false);
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"), Category = "Polaris|LevelStreaming")
+	UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"), Category = "LevelStreaming")
 	static void UnLoadLevelInstance(UObject* WorldContextObject, ULevelStreamingDynamic* StreamingLevel, bool& bOutSuccess);
  	
 	static ULevelStreamingDynamic* LoadLevelInstanceBySoftObjectPtr(UObject* WorldContextObject, TSoftObjectPtr<UWorld> Level, const FTransform LevelTransform, bool& bOutSuccess, const FString& OptionalLevelNameOverride = TEXT(""), TSubclassOf<ULevelStreamingDynamic> OptionalLevelStreamingClass = nullptr, bool bLoadAsTempPackage = false);

@@ -518,7 +518,7 @@ public:
 
 protected:	
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category = "Polaris|ListViewBase")
+	UFUNCTION(BlueprintCallable, Category = "ListViewBase")
 	void SetScrollAnimation(bool isAnim);
 
 public:	

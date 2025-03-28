@@ -264,7 +264,7 @@ private:
 	uint8 bHidden:1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Polaris|Rendering", meta=(AllowPrivateAccess=true))
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Rendering", meta=(AllowPrivateAccess=true))
 	uint8 bHidden_Polaris: 1;
 	
 	UPROPERTY(Replicated)
@@ -523,19 +523,19 @@ private:
 	static uint32 BeginPlayCallDepth;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditInstanceOnly, Category = "Polaris|Scalability")
+	UPROPERTY(EditInstanceOnly, Category = "Scalability")
 	uint8 bDisableScalabilityLow: 1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditInstanceOnly, Category = "Polaris|Scalability")
+	UPROPERTY(EditInstanceOnly, Category = "Scalability")
 	uint8 bDisableScalabilityMedium: 1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditInstanceOnly, Category = "Polaris|Scalability")
+	UPROPERTY(EditInstanceOnly, Category = "Scalability")
 	uint8 bDisableScalabilityHigh: 1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(AdvancedDisplay, EditInstanceOnly, Category = "Polaris|Scalability")
+	UPROPERTY(AdvancedDisplay, EditInstanceOnly, Category = "Scalability")
 	uint8 bDisableScalabilityDebug: 1;
 
 protected:
@@ -1646,7 +1646,7 @@ public:
 	FVector GetActorRelativeScale3D() const;
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category="Polaris|Rendering")
+	UFUNCTION(BlueprintCallable, Category="Rendering")
 	virtual void SetActorHiddenInGame_Polaris(bool bNewHidden);
 	
 	/**

@@ -57,7 +57,7 @@ public:
 	bool bFlipForRightToLeftFlowDirection;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris" )
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Appearance" )
 	bool bNoGamma;
 
 public:

@@ -1663,7 +1663,7 @@ public:
 	virtual bool CanCrouchInCurrentState() const;
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category ="Polaris|Character Movement")
+	UFUNCTION(BlueprintCallable, Category ="Character Movement")
 	void SetFallingAccelerationOutSide(float Speed, float speed_z, float acccel, float rotY);
 	
 	/** Sets collision half-height when crouching and updates dependent computations */

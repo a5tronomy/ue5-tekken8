@@ -568,15 +568,15 @@ public:
 	UNiagaraDataInterface* GetDataInterface(const FString &Name);
 	
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category = "Polaris|Niagara")
+	UFUNCTION(BlueprintCallable, Category = "Niagara")
 	void SetPolarisDeltaTimeScale(float Scale);
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category = "Polaris|Niagara")
+	UFUNCTION(BlueprintCallable, Category = "Niagara")
 	float GetPolarisDeltaTimeScale();
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category = "Polaris|Niagara")
+	UFUNCTION(BlueprintCallable, Category = "Niagara")
 	bool GetAutoDestroy();
 	
 	/**

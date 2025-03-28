@@ -599,11 +599,11 @@ public:
 	uint8 bUseBoundsFromLeaderPoseComponent : 1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Polaris|SkeletalMesh")
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "SkeletalMesh")
 	uint8 bForceUseBoundsFromLeaderPoseComponent : 1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Polaris|SkeletalMesh")
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "SkeletalMesh")
 	uint8 bForceUsePhysicsAssetBounds : 1;
 
 	// TEKKEN 8 Unreflected Custom Data
@@ -900,7 +900,7 @@ public:
 	FName GetBoneName(int32 BoneIndex) const;
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintPure, Category="Polaris|Components|SkinnedMesh")
+	UFUNCTION(BlueprintPure, Category="Components|SkinnedMesh")
 	FVector GetBoneLocation(FName BoneName, TEnumAsByte<EBoneSpaces::Type> Space) const;
 	
 	/**

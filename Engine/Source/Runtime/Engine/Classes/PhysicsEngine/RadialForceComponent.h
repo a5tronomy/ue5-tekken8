@@ -46,7 +46,7 @@ class ENGINE_API URadialForceComponent : public USceneComponent
 	float DestructibleDamage;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Interp, Category = "Polaris|RadialForceComponent")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Interp, Category = "RadialForceComponent")
 	float Height;
 	
 	/** Fire a single impulse */

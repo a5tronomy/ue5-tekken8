@@ -121,7 +121,7 @@ struct FMovieSceneSequencePlaybackSettings
 	uint32 bDynamicWeighting : 1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris|Playback")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Playback")
 	FVector2D LoopPoint;
 	
 	MOVIESCENE_API bool SerializeFromMismatchedTag(const FPropertyTag& Tag, FStructuredArchive::FSlot Slot);

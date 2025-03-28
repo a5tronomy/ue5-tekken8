@@ -71,7 +71,7 @@ public:
 	void SetOverlayMaterialMaxDrawDistance(float InMaxDrawDistance);
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category="Polaris|Rendering|Material")
+	UFUNCTION(BlueprintCallable, Category="Rendering|Material")
 	void SetOverrideMaterial(int32 ElementIndex, UMaterialInterface* Material);
 
 #if WITH_EDITOR

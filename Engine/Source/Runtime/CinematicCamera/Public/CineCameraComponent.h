@@ -243,7 +243,7 @@ protected:
 
 public:	
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris|config")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "config")
 	float OverridePostProcessBlendWeight;
 
 protected:	

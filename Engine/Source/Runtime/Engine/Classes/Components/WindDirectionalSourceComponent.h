@@ -46,7 +46,7 @@ public:
 	FWindSourceSceneProxy* SceneProxy;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Polaris|WindDirectionalSourceComponent")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "WindDirectionalSourceComponent")
 	int32 Group;
 
 	/**

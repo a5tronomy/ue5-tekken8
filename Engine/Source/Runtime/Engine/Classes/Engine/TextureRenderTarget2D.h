@@ -140,7 +140,7 @@ class UTextureRenderTarget2D : public UTextureRenderTarget
 	TEnumAsByte<enum EPixelFormat> OverrideFormat;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, AssetRegistrySearchable, Category = "Polaris|TextureRenderTarget2D")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AssetRegistrySearchable, Category = "TextureRenderTarget2D")
 	int32 NumMips;
 	
 	/**

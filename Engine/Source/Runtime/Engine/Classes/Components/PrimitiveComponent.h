@@ -436,7 +436,7 @@ public:
 	uint8 bHoldout : 1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Polaris|Rendering")
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Rendering")
 	uint8 bBehindGUI: 1;
 	
 	/** If this is True, this component won't be visible when the view actor is the component's owner, directly or indirectly. */
@@ -850,7 +850,7 @@ public:
 	int32 RegistrationSerialNumber = -1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere,  BlueprintReadOnly, AdvancedDisplay, Category = "Polaris|Rendering")
+	UPROPERTY(EditAnywhere,  BlueprintReadOnly, AdvancedDisplay, Category = "Rendering")
 	float LpvBiasMultiplier;
 
 	/**
@@ -1095,7 +1095,7 @@ public:
 	void SetCustomPrimitiveDataVector4(int32 DataIndex, FVector4 Value);
 
 	// Tekken 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category="Polaris|Rendering|Material")
+	UFUNCTION(BlueprintCallable, Category="Rendering|Material")
 	void SetCustomPrimitiveData(TArray<float> NewData);
 	
 	/** 
@@ -1401,7 +1401,7 @@ public:
 	void SetBoundsScale(float NewBoundsScale=1.f);
 
 	// TEKKEN 8 Custom Function
-	UFUNCTION(BlueprintCallable, Category = "Polaris|Rendering")
+	UFUNCTION(BlueprintCallable, Category = "Rendering")
 	void SetBehindGUI(bool bNewBehindGUI);
 	
 	/**

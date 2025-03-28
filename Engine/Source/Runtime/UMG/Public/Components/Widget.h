@@ -388,19 +388,19 @@ protected:
 public:
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget")
 	uint8 bBehindCharacter:1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget")
 	uint8 bNoBlendingHDR:1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget")
 	uint8 bCustomPosition:1;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaris")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget")
 	uint8 bNoColorAccessibility:1;
 
 #if WITH_EDITORONLY_DATA

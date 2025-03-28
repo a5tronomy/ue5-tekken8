@@ -84,7 +84,7 @@ protected:
 	bool bWrapHorizontalNavigation = false;
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, Category = "Polaris|Navigation")
+	UPROPERTY(EditAnywhere, Category = "Navigation")
 	bool bIsIgnoreNavigation = false;
 	
 	TSharedPtr<STileView<UObject*>> MyTileView;

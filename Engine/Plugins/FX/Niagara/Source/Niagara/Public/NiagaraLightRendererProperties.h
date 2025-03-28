@@ -126,7 +126,7 @@ public:
 	uint8 UnknownData_NiagaraLightRendererProperties[0x8] = {};
 
 	// TEKKEN 8 Custom Property
-	UPROPERTY(EditAnywhere, AdvancedDisplay, Category = "Polaris|Bindings")
+	UPROPERTY(EditAnywhere, AdvancedDisplay, Category = "Bindings")
 	FNiagaraVariableAttributeBinding LightScale;
 
 	FNiagaraDataSetAccessor<FNiagaraPosition> PositionDataSetAccessor;
