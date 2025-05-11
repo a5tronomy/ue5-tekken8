@@ -835,6 +835,9 @@ enum ETranslucencyVolumeCascade
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(uint32, GPUSceneViewId) \
 	VIEW_UNIFORM_BUFFER_MEMBER(float, ViewResolutionFraction) \
 	VIEW_UNIFORM_BUFFER_MEMBER(float, SubSurfaceColorAsTransmittanceAtDistanceInMeters) \
+	VIEW_UNIFORM_BUFFER_MEMBER(FVector4f, UnknownVector01) \
+	VIEW_UNIFORM_BUFFER_MEMBER(FVector4f, UnknownVector02) \
+	VIEW_UNIFORM_BUFFER_MEMBER(FIntPoint, UnknownPoint) \
 
 /** The uniform shader parameters associated with a view. */
 #define VIEW_UNIFORM_BUFFER_MEMBER(type, identifier) \
